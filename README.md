@@ -1,3 +1,18 @@
+# 🧪 Proyecto Pokémon con Next.js y React Query
+
+Este es un proyecto de ejemplo que consume la API pública de Pokémon (https://pokeapi.co/) utilizando **Next.js**, **React Query** y **Testing Library**.
+
+---
+
+## 🚀 Pasos para ejecutar el proyecto localmente
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/fernandasandoTKD/technical_tes
+   cd tu-repo
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
