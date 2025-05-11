@@ -91,7 +91,7 @@ export default function HomePage() {
         <p className="text-center">Cargando Pokémon...</p>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-black">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-black mt-10">
             {filteredPokemon?.slice(0, pageSize).map((pokemon: any) => (
               <Card
                 key={pokemon.name}
@@ -108,14 +108,14 @@ export default function HomePage() {
                 disabled={currentPage === 1}
                 className="bg-yellow-400 text-white px-4 py-2 rounded disabled:opacity-50"
               >
-                Anterior
+                ←
               </button>
               <span className="text-green-600 font-semibold mt-1.5">Página {currentPage}</span>
               <button
                 onClick={handleNext}
                 className="bg-green-400 text-white px-4 py-2 rounded"
               >
-                Siguiente
+                →
               </button>
             </div>
           )}
