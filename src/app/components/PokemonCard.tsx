@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 /**
  * Propiedades que acepta el componente
@@ -40,10 +41,11 @@ export default function PokemonCard({ data, showBackButton = true }: PokemonCard
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 text-xl mx-3">
           <div className="flex flex-col items-center">
             <div className="w-60 h-48 max-w-full max-h-full">
-              <img
+              <Image
                 src={data.sprites.front_default}
-                alt={data.name}
-                className="mx-auto w-full"
+                alt="Pikachu"
+                width={100}
+                height={100}
               />
             </div>
             <div className="mt-4 text-center">
