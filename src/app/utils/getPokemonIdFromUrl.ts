@@ -1,5 +1,7 @@
 export function getPokemonIdFromUrl(url: string): number {
-  const parts = url.split("/").filter(Boolean); // remueve strings vacíos
-  const id = parts[parts.length - 1]; // el último valor después del último slash
+  // Remover strings vacíos
+  const parts = url.split("/").filter(Boolean); 
+  // Tomar el último valor luego del slash
+  const id = parts[parts.length - 1]; 
   return Number(id);
 }

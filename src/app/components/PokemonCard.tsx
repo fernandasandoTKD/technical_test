@@ -1,11 +1,21 @@
+// Componente que esta al lado del cliente
 'use client';
 
 import Link from 'next/link';
 
+/**
+ * Propiedades que acepta el componente
+ * Prop data: obligatoria contien información de detalle
+ * Prop showBackButton: opcional para mostar el botón de regreso
+ */
 interface PokemonCardProps {
   data: any;
   showBackButton?: boolean;
 }
+
+/**
+ * Componente que muestra el detalle visual de un Pokémon.
+ */
 
 export default function PokemonCard({ data, showBackButton = true }: PokemonCardProps) {
   return (

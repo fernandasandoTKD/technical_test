@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 
+/**
+ * Componente tarjera para mostrar el nombre de un Pokémon.
+ */
+
 export default function Card({ name,id }: { name: string , id?:number}) {
 
   return (

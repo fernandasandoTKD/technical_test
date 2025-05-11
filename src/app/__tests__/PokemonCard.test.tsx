@@ -1,8 +1,11 @@
+// Importar funciones necesarias para testear componentes React
 import { render, screen } from '@testing-library/react';
+//Im portación de componente a testear
 import PokemonCard from '../components/PokemonCard';
 import '@testing-library/jest-dom';
 
-const dateTests = {
+// Simulación de data a testear
+const dataTests = {
   name: 'pikachu',
   weight: 60,
   height: 4,
@@ -18,24 +21,27 @@ const dateTests = {
   ],
 };
 
+// Grupo de tests para el componente PokemonCard
 describe('PokemonCard component', () => {
+   // Test 1: Verifica si el componente muestra correctamente el nombre, imagen y tipos
   test('renderiza correctamente nombre, imagen y tipos', () => {
-    render(<PokemonCard data={dateTests} />);
+    render(<PokemonCard data={dataTests} />);
 
-    // Solo verificamos el título principal
+    // Busca el encabezado por su rol y nombre 
     const heading = screen.getByRole('heading', { name: /detalle de pokémon pikachu/i });
     expect(heading).toBeInTheDocument();
 
-    // Verifica imagen por alt
+     // Busca la imagen por su texto alternativo
     const image = screen.getByAltText(/pikachu/i);
-    expect(image).toHaveAttribute('src', dateTests.sprites.front_default);
+    expect(image).toHaveAttribute('src', dataTests.sprites.front_default);
 
-    // Verifica los tipos
+    // Verifica que el tipo del Pokémon esté visible
     expect(screen.getByText(/electric/i)).toBeInTheDocument();
   });
 
+  // Test 2: Verifica que el botón "Volver" no se muestre si se indica que no debe aparecer
   test('no muestra el botón "Volver" si showBackButton es false', () => {
-    render(<PokemonCard data={dateTests} showBackButton={false} />);
+    render(<PokemonCard data={dataTests} showBackButton={false} />);
     const backButton = screen.queryByText(/volver/i);
     expect(backButton).not.toBeInTheDocument();
   });

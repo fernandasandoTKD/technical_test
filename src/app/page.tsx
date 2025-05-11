@@ -1,18 +1,36 @@
 'use client';
 
+/**
+ * Importa hooks personalizados para obtener:
+ * - Hooks useState para manejo de estados
+ * - Tipos de Pokémon
+ * - Lista general de Pokémon
+ * - Lista filtrada por tipo
+ */
 import { useState } from 'react';
 import { usePokemonByType } from '@/app/hooks/usePokemonByType';
 import { usePokemonTypes } from '@/app/hooks/usePokemonTypes';
 import { usePokemonList } from '@/app/hooks/usePokemonList';
+
+
+/**
+ * Importación de función para obtener el ID de un Pokémon desde su URL.
+ */
 import { getPokemonIdFromUrl } from '@/app/utils/getPokemonIdFromUrl';
 import Card from '@/app/components/Card';
 
+
+/**
+ * Página principal donde se muestran los Pokémon.
+ * Permite filtrar por tipo, buscar por nombre y navegar entre páginas.
+ */
 export default function HomePage() {
   const [selectedType, setSelectedType] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 12;
 
+    /* Llama a los hooks para obtener datos */
   const { data: types } = usePokemonTypes();
   const { data: allPokemon, isLoading: loadingAll } = usePokemonList(currentPage, pageSize);
   const { data: filteredPokemonByType, isLoading: loadingFilter } = usePokemonByType(selectedType);
@@ -23,23 +41,30 @@ export default function HomePage() {
   // Aplica filtro por tipo o nombre (localmente sobre la lista obtenida)
   let filteredPokemon = selectedType ? filteredPokemonByType : allPokemon;
 
+  //Lógica para aplicar filtro por nombre en la página actual
   if (searchTerm && filteredPokemon) {
     filteredPokemon = filteredPokemon.filter((p: any) =>
       p.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
+
+  //Limpieza de filtros y reinicio de página
   const handleClearFilters = () => {
     setSelectedType('');
     setSearchTerm('');
     setCurrentPage(1);
   };
 
+
+  // Lógica para cambio de página
   const handleNext = () => setCurrentPage((prev) => prev + 1);
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
 
+
+  //Renderización de interfaz
   return (
     <div className="p-6">
       <h3 className="text-2xl text-center font-semibold  bg-gradient-to-r from-green-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
