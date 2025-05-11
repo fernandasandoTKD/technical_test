@@ -40,12 +40,13 @@ export default function PokemonCard({ data, showBackButton = true }: PokemonCard
         <hr className="border-gray-500 my-4" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 text-xl mx-3">
           <div className="flex flex-col items-center">
-            <div className="w-60 h-48 max-w-full max-h-full">
+            <div className="w-auto h-auto">
               <Image
                 src={data.sprites.front_default}
                 alt="Pikachu"
-                width={100}
+                width={200}
                 height={100}
+                className="object-contain"
               />
             </div>
             <div className="mt-4 text-center">
