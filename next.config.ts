@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
    eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ['raw.githubusercontent.com', 'pokeapi.co'], 
+  },
 };
 
 export default nextConfig;
